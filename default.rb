@@ -17,9 +17,8 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc'
 end
 
 #method2
-#mongo_repo = "/etc/yum.repos.d/mongodb-org-3.4.repo"
 #File.open("/etc/yum.repos.d/mongodb-org-3.4.repo", a+)
-#include [cookbook::recipe] #repos file
+#include [cookbook::recipe] #no mango.repo.erb created
 
 package "mongodb" do
   action :install
