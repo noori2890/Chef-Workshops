@@ -23,12 +23,11 @@ package "mongodb-org" do
 end
 
 #start MongoDB including on reboot
-service "mongodb" do
-  action [:start, :enable]  
+service "mongod" do
+  action [:enable, :start]  
 end
 
+
+#extra-notes
 #case node [:platform_family]
 #when 'rhel'
-#method2
-#File.open("/etc/yum.repos.d/mongodb-org-3.4.repo", a+)
-#include [cookbook::recipe] #no mango.repo.erb created
