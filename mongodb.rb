@@ -4,9 +4,8 @@
 # Recipe:: install
 #
 #
-#
-case node [:platform]
-when 'redhat', 'centos'
+case node [:platform_family]
+when 'rhel'
       file 'etc/yum.repos.d/mongodb-org-3.4.repo' do
           content'
 [mongodb-org-3.4]
@@ -19,10 +18,8 @@ end
 
 #method2
 #mongo_repo = "/etc/yum.repos.d/mongodb-org-3.4.repo"
-#File.open("mongo_repo", a+)
-
-template "mongo_repo" do
-  
+#File.open("/etc/yum.repos.d/mongodb-org-3.4.repo", a+)
+#include [cookbook::recipe] #repos file
 
 package "mongodb" do
   action :install
