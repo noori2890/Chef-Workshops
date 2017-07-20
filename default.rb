@@ -19,6 +19,6 @@ execute "tar -xvf apache-tomcat-8.5.16.tar.gzi"
 
 
 #extract/install of tomcat
-template "/chef-repo/.chef/cookbooks/apachetomcat/templates/exintomcat.erb" do
-  source "exintomcat.erb"
+#template "/chef-repo/.chef/cookbooks/apachetomcat/templates/exintomcat.erb" do
+#  source "exintomcat.erb"
 #  source "template for startup
