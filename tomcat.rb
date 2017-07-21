@@ -12,21 +12,24 @@ package 'java-1.6.0-openjdk' do
   action:install
 end
 
-f = open('/opt/apache-tomcat-8.5.16')
-begin
-    http.request_get('http://apache.claz.org/tomcat/tomcat-8/v8.5.16/bin/apache-tomcat-8.5.16.tar.gz') do |resp|
-        resp.read_body do |segment|
-            f.write(segment)
-        end
-    end
-ensure
-    f.close()
+#ensure wget is installed
+package "wget" do
+    action :install
 end
 
-#extract and istall of tomcat from binary 
-#execute "cd /opt/"
-#execute "wget http://apache.claz.org/tomcat/tomcat-8/v8.5.16/bin/apache-tomcat-8.5.16.tar.gz"
-#execute "tar -xvf /opt/lsapache-tomcat-8.5.16.tar.gzi"
+#check if apache file exists if not unload tar file from binary
+if File.exist?("/apache-tomcat-8.5.16")
+    puts "File EXISTS"
+else
+  execute "wget http://apache.claz.org/tomcat/tomcat-8/v8.5.16/bin/apache-tomcat-8.5.16.tar.gz"
+  execute "tar -xvf /opt/apache-tomcat-8.5.16.tar.gz"
+end
+
+service "tomcat" do
+    action :start
+end
+
+
 
 #startup tomcat
 #execute "cd /opt/apache-tomcat-8.5.16/bin"
