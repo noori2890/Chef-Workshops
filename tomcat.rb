@@ -22,15 +22,10 @@ if File.exist?("/apache-tomcat-8.5.16")
     puts "File EXISTS"
 else
   execute "wget http://apache.claz.org/tomcat/tomcat-8/v8.5.16/bin/apache-tomcat-8.5.16.tar.gz"
-  execute "tar -xvf /opt/apache-tomcat-8.5.16.tar.gz"
+  execute "tar -xvf apache-tomcat-8.5.16.tar.gz"
 end
 
 service "tomcat" do
     action :start
 end
 
-
-
-#startup tomcat
-#execute "cd /opt/apache-tomcat-8.5.16/bin"
-#execute "./startup.sh"
